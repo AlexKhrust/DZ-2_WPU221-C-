@@ -36,16 +36,52 @@ namespace DZ_2_WPU221_C__
             WriteLine($"Название сайта: {Name}\nПуть к сайту: {Url}\nОписание сайта: {Description}\nIP-адрес сайта: {IP}\n");
         }
 
-        public void DataEntry () //попытка сделать ручное заполнение инфы по сайту
+        public void DataEntry () //ручное заполнение инфы по сайту
         {
-            //WriteLine("Введите наименование сайта: ");
-            //Name = ReadLine();
-            //WriteLine("Введите адрес сайта: ");
-            //Url = ReadLine();
-            //WriteLine("Введите описание сайта: ");
-            //Description = ReadLine();
-            //WriteLine("Введите IP-адрес сайта: ");
-            //IP = ReadLine();
+            Write("Введите название сайта: ");
+            Name = ReadLine();
+            Write("Введите адрес сайта: ");
+            Url = ReadLine();
+            Write("Введите описание сайта: ");
+            Description = ReadLine();
+            Write("Введите IP-адрес сайта: ");
+            IP = ReadLine();
+            WriteLine();
+        }
+
+        public void Correction()
+        {
+            WriteLine("***Корректировка данных сайта***");
+            WriteLine ("Выберите один из пунктов меню: \n1 - Изменить имя сайта; \n2 - Изменить адрес сайта; \n3 - Изменить описание сайта;" +
+                "\n4 - Изменить IP-адрес сайта; \n0 - Ничего не менять и выйти из программы.");
+
+            int choice = int.Parse(ReadLine());
+
+            if (choice>=0 && choice <=4)
+            {
+                switch (choice)
+                {
+                    case 1:
+                        Write("Введите название сайта: ");
+                        Name = ReadLine();
+                        break;
+                    case 2:
+                        Url = ReadLine();
+                        Write("Введите адрес сайта: ");
+                        break;
+                    case 3:
+                        Write("Введите описание сайта: ");
+                        Description = ReadLine();
+                        break;
+                    case 4:
+                        Write("Введите IP-адрес сайта: ");
+                        IP = ReadLine();
+                        break;
+                    case 0:
+                        break;
+                }
+            }else { WriteLine("Введены не корректные данные"); }
+            
         }
 
 
@@ -54,12 +90,18 @@ namespace DZ_2_WPU221_C__
     {
         static void Main(string[] args)
         {
-            Website emptyness = new Website();
-            Website weapon = new Website("weapon", "www.weapon.ua", "Сайт по продаже оружия", "127.0.0.12");
+            Website emptyness = new Website(); //создал пустой сайт
+            Website weapon = new Website("weapon", "www.weapon.ua", "Сайт по продаже оружия", "127.0.0.12"); //создал сайт с помощью конструктора
             
             emptyness.PrintWebSite();
             weapon.PrintWebSite();
-    
+
+            emptyness.DataEntry(); //вручную изменяем данные сайта
+            emptyness.PrintWebSite();//вывод для проверки
+
+            //обращение к отдельным полям класса конкретного объекта
+            weapon.Correction();
+            weapon.PrintWebSite();
         }
     }
 }
