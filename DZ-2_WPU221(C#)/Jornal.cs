@@ -40,7 +40,64 @@ namespace DZ_2_WPU221_C__
         {
             WriteLine($"Название журнала: {_name}\nГод основания журнала: {_age}\n" +
                 $"Описание журнала: {_description}\nТелефон журнала: {_phone}\n" +
-                $"Электронный адрес журнала: {_emale}");
+                $"Электронный адрес журнала: {_emale}\n");
+
+        }
+
+        public void DataEntry() //ручное заполнение инфы по журналу
+        {
+            Write("Введите название сайта: ");
+            _name = ReadLine();
+            Write("Введите год основания журнала: ");
+            _age = ReadLine();
+            Write("Введите описание журнала: ");
+            _description = ReadLine();
+            Write("Введите контактный номер телефона журнала: ");
+            _phone = ReadLine();
+            Write("Введите контактный эл. адрес журнала: ");
+            _emale = ReadLine();
+            WriteLine();
+        }
+
+        public void Correction()
+        {
+            WriteLine("***Корректировка данных журнала***");
+            WriteLine("Выберите один из пунктов меню: \n1 - Изменить название журнала; \n2 - Изменить год основания журнала; " +
+                "\n3 - Изменить описание журнала; \n4 - Изменить контактный номер телефона журнала;\n5 - Изменить эл. адрес журнала" +
+                " \n0 - Ничего не менять и выйти из программы.");
+
+            int choice = int.Parse(ReadLine());
+
+            if (choice >= 0 && choice <= 5)
+            {
+                switch (choice)
+                {
+                    case 1:
+                        Write("Введите название журнала: ");
+                        _name = ReadLine();
+                        break;
+                    case 2:
+                        _age = ReadLine();
+                        Write("Введите год основания журнала: ");
+                        break;
+                    case 3:
+                        Write("Введите описание журнала: ");
+                        _description = ReadLine();
+                        break;
+                    case 4:
+                        Write("Введите номер телефона: ");
+                        _phone = ReadLine();
+                        break;
+                    case 5:
+                        Write("Введите эл. адрес журнала: ");
+                        _emale = ReadLine();
+                        break;
+                    case 0:
+                        break;
+                }
+            }
+            else { WriteLine("Введены не корректные данные"); }
+
         }
     }
     internal class Jornal1
@@ -49,6 +106,14 @@ namespace DZ_2_WPU221_C__
         {
             Jornal j1 = new Jornal();
             j1.PrintJornal();
+
+            Jornal j2 = new Jornal();
+            j2.DataEntry();
+            j2.PrintJornal();
+
+            j2.Correction();
+            j2.PrintJornal();
+
         }
     }
 }

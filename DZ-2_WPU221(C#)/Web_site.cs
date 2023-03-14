@@ -100,8 +100,8 @@ namespace DZ_2_WPU221_C__
             emptyness.PrintWebSite();//вывод для проверки
 
             //обращение к отдельным полям класса конкретного объекта
-            weapon.Correction();
-            weapon.PrintWebSite();
+            emptyness.Correction();
+            emptyness.PrintWebSite();
         }
     }
 }
